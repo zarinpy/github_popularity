@@ -3,7 +3,7 @@ from fastapi import APIRouter, status, Request
 from pydantic import BaseModel, HttpUrl
 
 
-__all__ = ["auth_router"]
+__all__ = ["router"]
 
 router = APIRouter(prefix="/check_popularity")
 
