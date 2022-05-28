@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status
-from github_api import GithubApi
+from services.github_api import GithubApi
 
 from pydantic import BaseModel, HttpUrl
 

@@ -1,5 +1,5 @@
-import httpx
 from setting import setting
+from services import perform_request
 
 
 class GithubApi:
@@ -9,6 +9,5 @@ class GithubApi:
 
     @classmethod
     async def get_repo(cls, repo_address: str):
-        async with httpx.AsyncClient() as client:
-            response = client.get(url=setting.GITHUB_API + repo_address, headers=cls.header)
-            return response
+        response = await perform_request(url=setting.GITHUB_API + repo_address, method="get", headers=cls.header)
+        return response
