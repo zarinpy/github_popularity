@@ -1,5 +1,6 @@
 from setting import setting
 from services import perform_request
+from fastapi import HTTPException, status
 
 
 class GithubApi:
@@ -8,6 +9,25 @@ class GithubApi:
     }
 
     @classmethod
-    async def get_repo(cls, repo_address: str):
-        response = await perform_request(url=setting.GITHUB_API + repo_address, method="get", headers=cls.header)
-        return response
+    async def get_repo_popularity(cls, repo_address: str):
+        url = setting.GITHUB_API + "/repos/" + repo_address
+        response, status_code = await perform_request(url=url, method="get", headers=cls.header)
+
+        if status_code != 200:
+            message = response["info"]["message"]
+            HTTPException(
+                status_code=status_code,
+                detail=message,
+            )
+
+        forks = response["forks_count"]
+        stars = response["stargazers_count"]
+        score = stars * 1 + forks * 2
+
+        if score >= 500:
+            message = f"the {repo_address[1]} repo is popular"
+            result = {"starts": stars, "forks": forks}
+        else:
+            message = f"the {repo_address[1]} repo is not popular"
+            result = {"starts": stars, "forks": forks}
+        return result, message
