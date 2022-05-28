@@ -21,6 +21,7 @@ def http_exception_handler(request: Request, exc: HTTPException):
     )
 
 
+# add your routes here
 app.include_router(router=api, prefix="/api/v1")
 
 if __name__ == "__main__":
