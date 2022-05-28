@@ -8,6 +8,7 @@ class GithubApi:
     }
 
     @classmethod
-    async def get_repo(cls, addr: str):
+    async def get_repo(cls, repo_address: str):
         async with httpx.AsyncClient() as client:
-            response = client.get(url=addr, headers=cls.header)
+            response = client.get(url=setting.GITHUB_API + repo_address, headers=cls.header)
+            return response
