@@ -1,8 +1,8 @@
-from fastapi import FastAPI, HTTPException, Request, status
+import uvicorn
+from fastapi import FastAPI
+
 from api import api
 from setting import setting
-import uvicorn
-
 
 app = FastAPI(
     title="fast-API Github App",
