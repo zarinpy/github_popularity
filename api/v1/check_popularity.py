@@ -15,5 +15,5 @@ class RepoAddress(BaseModel):
 
 @check_popularity_router.post(path="/", status_code=status.HTTP_200_OK)
 async def check_popularity(data: RepoAddress):
-    response = await GithubApi.get_repo(addr=data.repo_address)
+    response = await GithubApi.get_repo(repo_address=data.repo_address)
     return response
