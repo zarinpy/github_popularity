@@ -1,0 +1,1 @@
+from api.v1.check_popularity import check_popularity_router
