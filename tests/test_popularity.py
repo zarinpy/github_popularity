@@ -15,11 +15,7 @@ class TestGithubPopularity:
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
-            requests.return_value = MagicMock(
-                status_code=200,
-                headers={'content-type': "application/json"},
-                json=lambda: mock_response,
-            )
+            requests.return_value = MagicMock(status_code=200, headers=header, json=lambda: mock_response)
             response = client.post(
                 url="/api/v1/check_popularity/",
                 headers=header,
@@ -28,10 +24,20 @@ class TestGithubPopularity:
             assert response.status_code == 200
 
     def test_valid_url(self):
-        header = {"Content-Type": "application/vnd.api+json"}
-        response = client.post(
-            url="/api/v1/check_popularity",
-            headers=header,
-            json={"repo_address": "https://github.com/tiangolo/fastapi"}
-        )
-        assert response.status_code == 200
+        override = "services.perform_request"
+        mock_response = {
+            "info": {
+                "message": "success",
+                "detail": {},
+            },
+            "data": {}
+        }
+        with patch(override) as requests:
+            header = {"Content-Type": "application/vnd.api+json"}
+            requests.return_value = MagicMock(status_code=200, headers=header, json=lambda: mock_response)
+            response = client.post(
+                url="/api/v1/check_popularity",
+                headers=header,
+                json={"repo_address": "https://github.com/tiangolo/fastapi"}
+            )
+            assert response.status_code == 200

@@ -22,7 +22,7 @@ def http_exception_handler(request: Request, exc: HTTPException):
 
 
 # add your routes here
-app.include_router(router=api, prefix="/api/v1")
+app.include_router(router=api, prefix="/api")
 
 if __name__ == "__main__":
     uvicorn.run(app, host=setting.HOST, port=setting.GENERAL_URL_PORT)
