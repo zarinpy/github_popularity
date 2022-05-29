@@ -14,8 +14,8 @@ class GithubApi:
         response, status_code = await perform_request(url=url, method="get", headers=cls.header)
 
         if status_code != 200:
-            message = response["info"]["message"]
-            HTTPException(
+            message = response["message"]
+            raise HTTPException(
                 status_code=status_code,
                 detail=message,
             )
