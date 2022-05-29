@@ -15,9 +15,13 @@ class GithubApi:
 
         if status_code != 200:
             message = response["message"]
+            raise HTTPException(status_code=status_code, detail=message)
+
+        if "forks_count" not in response or repo_address.split("/")[1] != response["name"]:
+            repo_name = repo_address.split("/")[1]
             raise HTTPException(
                 status_code=status_code,
-                detail=message,
+                detail=f"this address is not for {repo_name}, we couldn't find the name",
             )
 
         forks = response["forks_count"]
