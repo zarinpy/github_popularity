@@ -14,6 +14,8 @@ class Setting(BaseSettings):
     DOC_URL: str
 
     GITHUB_API: str
+    USERNAME: str
+    ACCESS_TOKEN: str
 
     class Config:
         env_file = env_file

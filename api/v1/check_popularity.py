@@ -15,14 +15,14 @@ class RepoAddress(BaseModel):
 
     @validator("repo_address")
     def validate_repo_address(cls, v: str):
-        if "http://" not in v or "https://" not in v or "/" not in v or "www.github.com/":
+        if "https://" not in v or "/" not in v or "github.com/" not in v:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="the address you interned is not valid",
             )
 
         v = v.split("/")
-        if len(v) < 2 or "" in v:
+        if len(v) < 2:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="the address you entered is not correct, it should contain owner/repo_name"

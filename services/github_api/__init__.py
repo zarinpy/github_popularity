@@ -2,6 +2,8 @@ from setting import setting
 from services import perform_request
 from fastapi import HTTPException, status
 
+import base64
+
 
 class GithubApi:
     header = {
@@ -10,6 +12,9 @@ class GithubApi:
 
     @classmethod
     async def get_repo_popularity(cls, repo_address: str):
+        user_pass = f"{setting.USERNAME}:{setting.ACCESS_TOKEN}".encode()
+        token = base64.b64encode(user_pass)
+        cls.header["Authorization"] = f"Basic {token.decode()}"
         url = setting.GITHUB_API + "/repos/" + repo_address
         response, status_code = await perform_request(url=url, method="get", headers=cls.header)
 
@@ -28,10 +33,12 @@ class GithubApi:
         stars = response["stargazers_count"]
         score = stars * 1 + forks * 2
 
+        repo_name = repo_address.split("/")[1]
         if score >= 500:
-            message = f"the {repo_address[1]} repo is popular"
+
+            message = f"the {repo_name} repo is popular"
             result = {"starts": stars, "forks": forks}
         else:
-            message = f"the {repo_address[1]} repo is not popular"
+            message = f"the {repo_name} repo is not popular"
             result = {"starts": stars, "forks": forks}
         return result, message
