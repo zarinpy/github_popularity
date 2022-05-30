@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException, Request
 
-from api import api
+from api import root_api
 from setting import setting
 from utility.custom_renderer import CustomResponse
 
@@ -22,7 +22,7 @@ def http_exception_handler(request: Request, exc: HTTPException):
 
 
 # add your routes here
-app.include_router(router=api, prefix="/api")
+app.include_router(router=root_api, prefix="/api")
 
 if __name__ == "__main__":
     uvicorn.run(app, host=setting.HOST, port=setting.GENERAL_URL_PORT)
