@@ -7,7 +7,7 @@
 1. FastAPI
 2. unicorn
 3. httpx
-4. pydantic
+4. pydantic[dotenv]
 ***
 #### NOTE: you you should install the env support version of `pydantic` to have the environment variable file `.env` be supported
 $ `pip install pydantic[dotenv]`
