@@ -1,5 +1,6 @@
+from unittest.mock import MagicMock, patch
+
 from tests import client
-from unittest.mock import patch, MagicMock
 
 
 class TestGithubPopularity:

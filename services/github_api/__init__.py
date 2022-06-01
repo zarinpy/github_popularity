@@ -1,8 +1,9 @@
-from setting import setting
-from services import perform_request
-from fastapi import HTTPException, status
-
 import base64
+
+from fastapi import HTTPException
+
+from services import perform_request
+from setting import setting
 
 
 class GithubApi:

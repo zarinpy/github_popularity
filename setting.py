@@ -2,6 +2,7 @@ import os
 
 from pydantic import BaseSettings
 
+
 __all__ = ["setting"]
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

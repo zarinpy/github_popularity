@@ -1,4 +1,4 @@
-from fastapi import status, HTTPException, APIRouter
+from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel, validator
 
 from services.github_api import GithubApi

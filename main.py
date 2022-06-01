@@ -1,9 +1,11 @@
 import uvicorn
+
 from fastapi import FastAPI, HTTPException, Request
 
 from api import root_api
 from setting import setting
 from utility.custom_renderer import CustomResponse
+
 
 app = FastAPI(
     title="fast-API Github App",
