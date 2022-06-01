@@ -25,7 +25,7 @@ class RepoAddress(BaseModel):
         if len(v) < 2:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="the address you entered is not correct, it should contain owner/repo_name"
+                detail="the address you entered is not correct, it should contain owner/repo_name",
             )
 
         return "/".join(v[-2:])

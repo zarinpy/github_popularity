@@ -12,7 +12,7 @@ class TestGithubPopularity:
                 "message": "success",
                 "detail": {},
             },
-            "data": {}
+            "data": {},
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
@@ -20,7 +20,7 @@ class TestGithubPopularity:
             response = client.post(
                 url="/api/v1/check_popularity/",
                 headers=header,
-                json={"repo_address": "https://github.com/tiangolo/fastapi"}
+                json={"repo_address": "https://github.com/tiangolo/fastapi"},
             )
             assert response.status_code == 200
 
@@ -31,7 +31,7 @@ class TestGithubPopularity:
                 "message": "success",
                 "detail": {},
             },
-            "data": {}
+            "data": {},
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
@@ -39,7 +39,7 @@ class TestGithubPopularity:
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
-                json={"repo_address": "https://github.com/tiangolo/fastapi"}
+                json={"repo_address": "https://github.com/tiangolo/fastapi"},
             )
             assert response.status_code == 200
 
@@ -50,7 +50,7 @@ class TestGithubPopularity:
                 "message": "Not Found",
                 "detail": {},
             },
-            "data": {}
+            "data": {},
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
@@ -58,7 +58,7 @@ class TestGithubPopularity:
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
-                json={"repo_address": "https://github.com/tiangolofastapi"}
+                json={"repo_address": "https://github.com/tiangolofastapi"},
             )
             assert response.status_code == 404
 
@@ -69,7 +69,7 @@ class TestGithubPopularity:
                 "message": "",
                 "detail": {},
             },
-            "data": {}
+            "data": {},
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
@@ -77,13 +77,13 @@ class TestGithubPopularity:
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
-                json={"repo_address": "https://github.comtiangolofastapi"}
+                json={"repo_address": "https://github.comtiangolofastapi"},
             )
             assert response.status_code == 400
 
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
-                json={"repo_address": "https:www.github.comtiangolofastapi"}
+                json={"repo_address": "https:www.github.comtiangolofastapi"},
             )
             assert response.status_code == 400
