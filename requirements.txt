@@ -4,3 +4,4 @@ httpx==0.23.0
 pytest==7.1.2
 uvicorn==0.17.6
 requests==2.27.1
+pytest-cov==3.0.0
