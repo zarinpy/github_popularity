@@ -23,16 +23,29 @@ class RepoAddress(BaseModel):
 
         v = v.split("/")
         if len(v) < 2:
+            message = (
+                "the address you entered is not correct,"
+                " it should contain owner/repo_name"
+            )
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="the address you entered is not correct, it should contain owner/repo_name",
+                detail=message,
             )
 
         return "/".join(v[-2:])
 
 
-@check_popularity_router.post(path="/check_popularity/", status_code=status.HTTP_200_OK, include_in_schema=False)
-@check_popularity_router.post(path="/check_popularity", status_code=status.HTTP_200_OK)
+@check_popularity_router.post(
+    path="/check_popularity/",
+    status_code=status.HTTP_200_OK,
+    include_in_schema=False,
+)
+@check_popularity_router.post(
+    path="/check_popularity",
+    status_code=status.HTTP_200_OK,
+)
 async def check_popularity(data: RepoAddress):
-    result, message = await GithubApi.get_repo_popularity(repo_address=data.repo_address)
+    result, message = await GithubApi.get_repo_popularity(
+        repo_address=data.repo_address,
+    )
     return CustomResponse(content=result, message=message)

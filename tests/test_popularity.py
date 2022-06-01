@@ -16,7 +16,11 @@ class TestGithubPopularity:
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
-            requests.return_value = MagicMock(status_code=200, headers=header, json=lambda: mock_response)
+            requests.return_value = MagicMock(
+                status_code=200,
+                headers=header,
+                json=lambda: mock_response,
+            )
             response = client.post(
                 url="/api/v1/check_popularity/",
                 headers=header,
@@ -35,7 +39,11 @@ class TestGithubPopularity:
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
-            requests.return_value = MagicMock(status_code=200, headers=header, json=lambda: mock_response)
+            requests.return_value = MagicMock(
+                status_code=200,
+                headers=header,
+                json=lambda: mock_response,
+            )
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
@@ -54,7 +62,11 @@ class TestGithubPopularity:
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
-            requests.return_value = MagicMock(status_code=200, headers=header, json=lambda: mock_response)
+            requests.return_value = MagicMock(
+                status_code=200,
+                headers=header,
+                json=lambda: mock_response,
+            )
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
@@ -73,7 +85,11 @@ class TestGithubPopularity:
         }
         with patch(override) as requests:
             header = {"Content-Type": "application/vnd.api+json"}
-            requests.return_value = MagicMock(status_code=200, headers=header, json=lambda: mock_response)
+            requests.return_value = MagicMock(
+                status_code=200,
+                headers=header,
+                json=lambda: mock_response,
+            )
             response = client.post(
                 url="/api/v1/check_popularity",
                 headers=header,
