@@ -29,3 +29,8 @@ $ `pytest --cov-report html --cov=. tests/`
 ### improvements in future:
 1. handle rate limits from the [Github API](https://docs.github.com/en/rest/rate-limit#about-the-rate-limit-api)
 2. implement load test with [siege](https://github.com/JoeDog/siege)
+
+### NOTE: 
+before committing new changes please run the command `tox` to make sure some PEP8 rules are fixed 
+
+you can modify tox configs in `tox.ini` file
