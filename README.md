@@ -17,8 +17,10 @@ $ `pip install pydantic[dotenv]`
 $ `docker build -t my_github_popularity_check .`
 #### NOTE: if you are not familiar with Docker please take a look at the [documentation](https://docs.docker.com/)
 ***
-### to run the tests enter the command below
+#### to run the tests enter the command below
 $ ` pytest  tests/`
+#### to run tests with coverage
+$ `pytest --cov-report html --cov=. tests/`
 ***
 #### to run the server locally simple enter the command in the root folder 
 `python main.py` 
