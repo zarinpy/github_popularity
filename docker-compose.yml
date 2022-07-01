@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  web:
+    image: github_popularity
+    volumes:
+      - .:/github-popularity-fastapi
+    ports:
+      - "8000:8000"
+    networks:
+      - local-net
+
+networks:
+  local-net:
+    driver: bridge

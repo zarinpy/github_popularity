@@ -15,6 +15,10 @@ $ `pip install pydantic[dotenv]`
 ***
 ### in order to build the Docker image enter the below comnad 
 $ `docker build -t my_github_popularity_check .`
+
+### then you can run the image with docker compoer
+$ `docker-compose up`
+
 #### NOTE: if you are not familiar with Docker please take a look at the [documentation](https://docs.docker.com/)
 ***
 #### to run the tests enter the command below
