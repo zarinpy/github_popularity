@@ -3,7 +3,7 @@ marshmallow==3.15.0
 httpx==0.23.0
 pytest==7.1.2
 uvicorn==0.17.6
-requests==2.27.1
+requests==2.31.0
 pytest-cov==3.0.0
 tox==3.25.0
 isort==5.10.1
